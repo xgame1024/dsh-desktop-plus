@@ -1,0 +1,13 @@
+# dsh-desktop-plus bundle patch, applied after the shipped bundles.
+#
+# It inserts the Host half of the dsh-desktop-plus bundle. The same package carries
+# the Web client half (package.json `dsh.client`), which adds the session rows
+# and the per-message retraction controls.
+#
+# User overrides belong in the profile's own cordis.patch.yml, addressed by row id:
+#   - id: dsh-desktop-plus
+#     config:
+#       allowLiveSessionDelete: false
+- insert:
+    - id: dsh-desktop-plus
+      name: 'dsh-desktop-plus'

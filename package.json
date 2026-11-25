@@ -1,0 +1,73 @@
+{
+  "name": "dsh-desktop-plus",
+  "version": "0.1.0",
+  "description": "A more comfortable desktop for DeepSeek Harness.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "session",
+    "conversation",
+    "retract",
+    "rewind"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xgame1024/dsh-desktop-plus.git"
+  },
+  "homepage": "https://github.com/xgame1024/dsh-desktop-plus#readme",
+  "bugs": {
+    "url": "https://github.com/xgame1024/dsh-desktop-plus/issues"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/config.js && node --check lib/names.js && node --check lib/session-admin.js && node --check lib/rewind-admin.js && node --check lib/surface-order.js && node --check lib/client.js && node --check lib/client.sessions.js && node --check lib/client.rewind.js && node --check lib/client.preview.js",
+    "prepack": "npm run check"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-sidebar-right",
+        "@deepseek-ai/dsh-client-ui-context-menu",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  }
+}
